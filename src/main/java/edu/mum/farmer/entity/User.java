@@ -6,9 +6,14 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
+
+import org.springframework.validation.annotation.Validated;
 
 @Entity
-public class User {
+public abstract class User {
 
 	@Id
 	@GeneratedValue
@@ -17,10 +22,27 @@ public class User {
 	private String lastname;
 	private String username;
 	private String password;
+	@Temporal(TemporalType.DATE)
 	private Date birthDate;
 	private String phone;
 	@Embedded
 	private Address address;
+
+	protected User() {
+
+	}
+
+	public User(String firstname, String lastname, String username, String password, Date birthDate, String phone,
+			Address address) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.username = username;
+		this.password = password;
+		this.birthDate = birthDate;
+		this.phone = phone;
+		this.address = address;
+	}
 
 	public long getId() {
 		return id;

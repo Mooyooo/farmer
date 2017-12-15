@@ -2,13 +2,13 @@ package edu.mum.farmer.entity;
 
 import java.util.Date;
 
-public class Customer extends User {
+public class Admin extends User {
 
-	protected Customer() {
+	protected Admin() {
 		super();
 	}
 
-	public Customer(String firstname, String lastname, String username, String password, Date birthDate, String phone,
+	public Admin(String firstname, String lastname, String username, String password, Date birthDate, String phone,
 			Address address) {
 		super(firstname, lastname, username, password, birthDate, phone, address);
 		// TODO Auto-generated constructor stub
