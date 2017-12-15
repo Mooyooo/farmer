@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -18,6 +20,9 @@ public class Product {
 	private String productName;
 	private double price;
 
+	@Enumerated(EnumType.ORDINAL)
+	private ProductState productState;
+
 	@ElementCollection
 	private List<byte[]> images = new ArrayList<>();
 
@@ -30,6 +35,11 @@ public class Product {
 		this.description = description;
 		this.productName = productName;
 		this.price = price;
+		this.productState = ProductState.CREATED;
+	}
+
+	public long getId() {
+		return id;
 	}
 
 	public String getDescription() {
@@ -54,6 +64,14 @@ public class Product {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public ProductState getProductState() {
+		return this.productState;
+	}
+
+	public void setProductState(ProductState state) {
+		this.productState = state;
 	}
 
 	public List<byte[]> getImages() {
