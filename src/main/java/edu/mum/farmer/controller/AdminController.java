@@ -25,12 +25,14 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin/approve/{id}")
-	public String approveProduct(@PathVariable("id") long id, Model model) {		
+	public String approveProduct(@PathVariable("id") long id, Model model) {
+		service.approveProduct(id);
 		return "redirect:/admin";
 	}
 
 	@RequestMapping(value = "/admin/reject/{id}")
 	public String rejectProduct(@PathVariable("id") long id, Model model) {
+		service.rejectProduct(id);
 		return "redirect:/admin";
 	}
 

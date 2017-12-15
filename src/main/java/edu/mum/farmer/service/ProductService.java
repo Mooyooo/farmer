@@ -11,11 +11,11 @@ import edu.mum.farmer.entity.ProductState;
 import edu.mum.farmer.repository.ProductRepository;
 
 @Service
-public class ProductService implements IProductService{
+public class ProductService implements IProductService {
 
 	@Autowired
 	ProductRepository productRepository;
-	
+
 	@Override
 	public List<Product> getAllProducts() {
 		List<Product> products = new ArrayList<>();
@@ -29,18 +29,36 @@ public class ProductService implements IProductService{
 	}
 
 	@Override
-	public void addProduct(Product product) {
-		productRepository.save(product);
+	public void addProduct(Product p) {
+		productRepository.save(p);
 	}
 
 	@Override
-	public void updateProduct(Product product) {
-		productRepository.save(product);
+	public void updateProduct(Product p) {
+		productRepository.save(p);
 	}
 
 	@Override
 	public void deleteProduct(long id) {
 		productRepository.delete(id);
+	}
+
+	@Override
+	public void approveProduct(long id) {
+		Product p = productRepository.findOne(id);
+		if (p != null) {
+			p.setProductState(ProductState.APPROVED);
+			updateProduct(p);
+		}
+	}
+
+	@Override
+	public void rejectProduct(long id) {
+		Product p = productRepository.findOne(id);
+		if (p != null) {
+			p.setProductState(ProductState.REJECTED);
+			updateProduct(p);
+		}
 	}
 
 	@Override
