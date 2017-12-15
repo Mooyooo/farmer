@@ -14,4 +14,16 @@ public class Admin extends User {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void approveProduct(long produtctId) {
+
+	}
+
+	public void rejectProduct(long productId) {
+
+	}
+
+	public void deleteProduct(long productId) {
+
+	}
+
 }
