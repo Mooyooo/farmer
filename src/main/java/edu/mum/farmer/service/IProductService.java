@@ -14,4 +14,6 @@ public interface IProductService {
 	public void updateProduct(Product product);
 
 	public void deleteProduct(long id);
+	
+	public List<Product> getProductByProductState();
 }

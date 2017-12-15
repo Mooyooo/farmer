@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import edu.mum.farmer.entity.Client;
 import edu.mum.farmer.service.IClientService;
+import edu.mum.farmer.service.IProductService;
 
 @Controller
 //@RestController
@@ -21,6 +21,9 @@ public class CustomerController {
 	@Autowired
 	public IClientService customerService;
 
+	@Autowired 
+	public IProductService productService;
+	
 	@RequestMapping("/customers")
 	public String getAllCustomers(Model model) {
 	//public List<Client> getAllCustomers(Model model) {
@@ -47,5 +50,11 @@ public class CustomerController {
 	@RequestMapping(method = RequestMethod.DELETE, value = "/customers{id}")
 	public void delete(@PathVariable long id) {
 		customerService.deleteCustomer(id);
+	}
+	
+	@RequestMapping("/approvedProducts")
+	public String interstProduct(Model model) {
+		model.addAttribute("approvedProducts", productService.getProductByProductState());
+		return "approvedProducts";
 	}
 }

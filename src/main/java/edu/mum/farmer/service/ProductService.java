@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.mum.farmer.entity.Product;
+import edu.mum.farmer.entity.ProductState;
 import edu.mum.farmer.repository.ProductRepository;
 
 @Service
@@ -40,6 +41,11 @@ public class ProductService implements IProductService{
 	@Override
 	public void deleteProduct(long id) {
 		productRepository.delete(id);
+	}
+
+	@Override
+	public List<Product> getProductByProductState() {
+		return productRepository.getProductByProductState(ProductState.APPROVED);
 	}
 
 }

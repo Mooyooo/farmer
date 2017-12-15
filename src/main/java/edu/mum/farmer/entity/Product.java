@@ -20,7 +20,7 @@ public class Product {
 	private String productName;
 	private double price;
 
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private ProductState productState;
 
 	@ElementCollection
