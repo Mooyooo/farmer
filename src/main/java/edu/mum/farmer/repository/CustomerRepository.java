@@ -2,7 +2,7 @@ package edu.mum.farmer.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import edu.mum.farmer.entity.Customer;
+import edu.mum.farmer.entity.Client;
 
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
+public interface CustomerRepository extends CrudRepository<Client, Long> {
 }

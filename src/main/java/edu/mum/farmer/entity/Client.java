@@ -15,8 +15,7 @@ import javax.validation.Valid;
 import org.springframework.validation.annotation.Validated;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User {
+public class Client {
 
 	@Id
 	@GeneratedValue
@@ -24,24 +23,21 @@ public abstract class User {
 	private String firstname;
 	private String lastname;
 	private String username;
-	private String password;
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
 	private String phone;
 	@Embedded
 	private Address address;
 
-	protected User() {
+	protected Client() {
 
 	}
 
-	public User(String firstname, String lastname, String username, String password, Date birthDate, String phone,
-			Address address) {
+	public Client(String firstname, String lastname, String username, Date birthDate, String phone, Address address) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.username = username;
-		this.password = password;
 		this.birthDate = birthDate;
 		this.phone = phone;
 		this.address = address;
@@ -77,14 +73,6 @@ public abstract class User {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public Date getBirthDate() {

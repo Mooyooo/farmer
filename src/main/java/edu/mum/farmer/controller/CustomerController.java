@@ -1,6 +1,5 @@
 package edu.mum.farmer.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.mum.farmer.entity.Customer;
+import edu.mum.farmer.entity.Client;
 import edu.mum.farmer.service.CustomerService;
 import edu.mum.farmer.service.ICustomerService;
 
@@ -21,22 +20,22 @@ public class CustomerController {
 	public ICustomerService customerService;
 
 	@RequestMapping("/customers")
-	public List<Customer> getAllCustomers() {
+	public List<Client> getAllCustomers() {
 		return customerService.getAllCustomers();
 	}
 
 	@RequestMapping("/customers/{id}")
-	public Customer getCustomer(@PathVariable long id) {
+	public Client getCustomer(@PathVariable long id) {
 		return customerService.getCustomer(id);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/customers/{id}")
-	public void updateCustomer(@PathVariable long id, Customer customer) {
+	public void updateCustomer(@PathVariable long id, Client customer) {
 		customerService.updateCustomer(customer);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/customers")
-	public void addCustomer(@RequestBody Customer customer) {
+	public void addCustomer(@RequestBody Client customer) {
 		customerService.addCustomer(customer);
 	}
 

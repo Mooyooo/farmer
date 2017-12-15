@@ -2,16 +2,16 @@ package edu.mum.farmer.service;
 
 import java.util.List;
 
-import edu.mum.farmer.entity.Customer;
+import edu.mum.farmer.entity.Client;
 
 public interface ICustomerService {
-	public List<Customer> getAllCustomers();
+	public List<Client> getAllCustomers();
 
-	public Customer getCustomer(long id);
+	public Client getCustomer(long id);
 
-	public void addCustomer(Customer customer);
+	public void addCustomer(Client customer);
 
-	public void updateCustomer(Customer customer);
+	public void updateCustomer(Client customer);
 
 	public void deleteCustomer(long id);
 }
