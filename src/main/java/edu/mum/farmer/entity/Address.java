@@ -1,7 +1,6 @@
 package edu.mum.farmer.entity;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 
 @Embeddable
 public class Address {
