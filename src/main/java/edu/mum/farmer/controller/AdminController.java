@@ -3,41 +3,43 @@ package edu.mum.farmer.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import edu.mum.farmer.entity.Product;
 import edu.mum.farmer.entity.ProductState;
 import edu.mum.farmer.service.IProductService;
 
-@RestController
+@Controller
 public class AdminController {
 
 	@Autowired
 	private IProductService service;
 
-	@RequestMapping("/admin")
-	public List<Product> getProducts() {
-		return service.getAllProducts();
+	@RequestMapping(value = "/admin")
+	public String getProducts(Model model) {
+		List<Product> products = service.getAllProducts();
+		model.addAttribute("products", products);
+		return "admin";
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/admin/approve")
-	public void approveProduct(Product p) {
-		p.setProductState(ProductState.APPROVED);
-		service.updateProduct(p);
+	@RequestMapping(value = "/admin/approve/{id}")
+	public String approveProduct(@PathVariable("id") long id, Model model) {		
+		return "redirect:/admin";
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/admin/reject")
-	public void rejectProduct(Product p) {
-		p.setProductState(ProductState.REJECTED);
-		service.updateProduct(p);
+	@RequestMapping(value = "/admin/reject/{id}")
+	public String rejectProduct(@PathVariable("id") long id, Model model) {
+		return "redirect:/admin";
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "/admin/delete/{id}")
-	public void deleteProduct(@RequestParam long id, Product p) {
+	@RequestMapping(value = "/admin/delete/{id}")
+	public String deleteProduct(@PathVariable("id") long id, Model model) {
 		service.deleteProduct(id);
+		return "redirect:/admin";
 	}
 
 }
