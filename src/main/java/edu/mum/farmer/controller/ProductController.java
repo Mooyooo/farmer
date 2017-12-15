@@ -13,7 +13,7 @@ import edu.mum.farmer.entity.Product;
 import edu.mum.farmer.service.IProductService;
 
 @RestController
-public class FarmerController {
+public class ProductController {
 	@Autowired
 	public IProductService productService;
 	
