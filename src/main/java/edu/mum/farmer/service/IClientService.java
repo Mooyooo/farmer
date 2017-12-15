@@ -4,7 +4,7 @@ import java.util.List;
 
 import edu.mum.farmer.entity.Client;
 
-public interface ICustomerService {
+public interface IClientService {
 	public List<Client> getAllCustomers();
 
 	public Client getCustomer(long id);

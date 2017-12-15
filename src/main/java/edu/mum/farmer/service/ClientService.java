@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.mum.farmer.entity.Client;
-import edu.mum.farmer.repository.CustomerRepository;
+import edu.mum.farmer.repository.ClientRepository;
 
 @Service
-public class CustomerService implements ICustomerService {
+public class ClientService implements IClientService {
 
 	@Autowired
-	CustomerRepository customerRepository;
+	ClientRepository customerRepository;
 
 	public List<Client> getAllCustomers() {
 		List<Client> customers = new ArrayList<>();
