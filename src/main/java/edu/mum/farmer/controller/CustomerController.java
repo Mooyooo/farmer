@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.mum.farmer.entity.Customer;
 import edu.mum.farmer.service.CustomerService;
+import edu.mum.farmer.service.ICustomerService;
 
 @RestController
 public class CustomerController {
 
 	@Autowired
-	public CustomerService customerService;
+	public ICustomerService customerService;
 
 	@RequestMapping("/customers")
 	public List<Customer> getAllCustomers() {

@@ -10,7 +10,7 @@ import edu.mum.farmer.entity.Customer;
 import edu.mum.farmer.repository.CustomerRepository;
 
 @Service
-public class CustomerService {
+public class CustomerService  implements ICustomerService{
 
 	@Autowired
 	CustomerRepository customerRepository;
