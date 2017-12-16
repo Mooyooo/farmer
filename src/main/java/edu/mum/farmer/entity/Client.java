@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -29,8 +30,11 @@ public class Client {
 	@Embedded
 	private Address address;
 
-	protected Client() {
+	@OneToOne
+	private ShoppingCart shoppingCart;
 
+	protected Client() {
+		shoppingCart = new ShoppingCart();
 	}
 
 	public Client(String firstname, String lastname, String username, Date birthDate, String phone, Address address) {
@@ -98,4 +102,13 @@ public class Client {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+
 }
