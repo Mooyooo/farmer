@@ -6,69 +6,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
 <title>Admin</title>
-
-<style type="text/css">
-.tg {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-.tg td {
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	padding: 10px 5px;
-	border-style: solid;
-	border-width: 1px;
-	overflow: hidden;
-	word-break: normal;
-}
-
-.tg th {
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	font-weight: normal;
-	padding: 10px 5px;
-	border-style: solid;
-	border-width: 1px;
-	overflow: hidden;
-	word-break: normal;
-}
-
-.tg .tg-yw4l {
-	vertical-align: top
-}
-</style>
 </head>
 <body>
-	<table class="tg" style="table-layout: fixed; width: 787px">
-		<colgroup>
-			<col style="width: 200px">
-			<col style="width: 200px">
-			<col style="width: 100px">
-			<col style="width: 100px">
-			<col style="width: 60px">
-			<col style="width: 60px">
-			<col style="width: 60px">
-		</colgroup>
-		<tr>
-			<th class="tg-yw4l">Description</th>
-			<th class="tg-yw4l">Product Name</th>
-			<th class="tg-yw4l">Price</th>
-			<th class="tg-yw4l">State</th>
-			<th class="tg-yw4l"></th>
-			<th class="tg-yw4l"></th>
-			<th class="tg-yw4l"></th>
-		</tr>
+	<table>
+		<thead>
+			<tr>
+				<th>Description</th>
+				<th>Product Name</th>
+				<th>Price</th>
+				<th>State</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
 		<c:forEach items="${ products }" var="p">
 			<tr>
-				<td class="tg-yw4l">${ p.description }</td>
-				<td class="tg-yw4l">${ p.productName }</td>
-				<td class="tg-yw4l">${ p.price }</td>
-				<td class="tg-yw4l">${ p.productState }</td>
-				<td class="tg-yw4l"><a href="admin/approve/${ p.id }">Approve</a></td>
-				<td class="tg-yw4l"><a href="admin/reject/${ p.id }">Reject</a></td>
-				<td class="tg-yw4l"><a href="/admin/delete/${ p.id }">Delete</a></td>
+				<td>${ p.description }</td>
+				<td><a href="product/${ p.id }">${ p.productName }</a></td>
+				<td>${ p.price }</td>
+				<td>${ p.productState }</td>
+				<td><a href="admin/approve/${ p.id }">Approve</a></td>
+				<td><a href="admin/reject/${ p.id }">Reject</a></td>
+				<td><a href="admin/delete/${ p.id }">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>
