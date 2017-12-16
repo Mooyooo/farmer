@@ -13,20 +13,20 @@ import edu.mum.farmer.service.IClientService;
 import edu.mum.farmer.service.IProductService;
 
 @Controller
-//@RestController
+// @RestController
 public class CustomerController {
 
 	@Autowired
 	public IClientService customerService;
 
-	@Autowired 
+	@Autowired
 	public IProductService productService;
-	
+
 	@RequestMapping("/customers")
 	public String getAllCustomers(Model model) {
-	//public List<Client> getAllCustomers(Model model) {
+		// public List<Client> getAllCustomers(Model model) {
 		model.addAttribute("customers", customerService.getAllCustomers());
-//		return customerService.getAllCustomers();
+		// return customerService.getAllCustomers();
 		return "customerList";
 	}
 
@@ -49,7 +49,7 @@ public class CustomerController {
 	public void delete(@PathVariable long id) {
 		customerService.deleteCustomer(id);
 	}
-	
+
 	@RequestMapping("/approvedProducts")
 	public String interstProduct(Model model) {
 		model.addAttribute("approvedProducts", productService.getProductByProductState());
