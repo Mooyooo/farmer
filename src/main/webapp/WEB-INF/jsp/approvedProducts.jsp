@@ -24,9 +24,11 @@
 					<td>${ap.description }</td>
 					<td>${ap.price }</td>
 					<td><a href="/productDetail/${ap.id}">detail</a></td>
-					<td><input type="number" name="quantity"
-							value="${lineItem.quantity}" placeholder="quantity" min="1"> <input
-							type="submit" value="add to cart" /></td>
+					<td>
+						<input type="number" name="quantity" value="${lineItem.quantity}"
+							placeholder="quantity" min="1" />
+							<input type="submit" value="add to cart" />
+					</td>
 				</s:form>
 			</tr>
 		</c:forEach>

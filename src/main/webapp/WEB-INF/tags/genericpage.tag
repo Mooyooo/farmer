@@ -43,15 +43,16 @@ body {
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">All
+					<li class="nav-item"><a class="nav-link"
+						href="/approvedProducts">Products</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin">All
 							Products</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Add
 							Product</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Shopping
 							Cart</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Login/Logout</a>
+					<li class="nav-item"><a class="nav-link" href="/login">Login/Logout</a>
 					</li>
 				</ul>
 			</div>
