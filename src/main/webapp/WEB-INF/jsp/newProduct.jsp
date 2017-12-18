@@ -7,7 +7,9 @@
 <t:genericpage>
 	<jsp:body>
 <div class="container">
-	<form action="newProduct" method="post">
+	<h1>New Product</h1>
+	<br>
+	<form action="newProduct" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td align="left">Product Name: </td>
@@ -20,6 +22,10 @@
 			<tr>
 				<td align="left">Price: </td>
 				<td width=800><input name="price" type="number" step="0.01" class="form-control" placeholder="Price" required autofocus/></td>
+			</tr>
+			<tr>
+				<td align="left">Images:</td>
+				<td><input type="file" name="file" multiple required></td>
 			</tr>
 			<tr>
 				<td colspan=2><button class="btn btn-lg btn-primary btn-block" type="submit">Save</button></td>

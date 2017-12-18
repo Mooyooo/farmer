@@ -23,8 +23,8 @@
 		</tr>
 	</table>
 	<div>
-		<c:forEach items="${ product.images }" var="i">
-			<img src="data:image/jpg;base64,${ i }" width="200px" height="200px">
+		<c:forEach var="productImage" items="${product.images}">
+			<img src="data:image/jpeg;base64,${productImage}" width="200px" height="200px">
 		</c:forEach>
 	</div>
 </jsp:body>
