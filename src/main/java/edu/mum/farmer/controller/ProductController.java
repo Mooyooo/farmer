@@ -3,42 +3,52 @@ package edu.mum.farmer.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import edu.mum.farmer.entity.Product;
+import edu.mum.farmer.entity.ProductState;
 import edu.mum.farmer.service.IProductService;
 
-@RestController
+@Controller
 public class ProductController {
+
 	@Autowired
 	public IProductService productService;
-	
-	@RequestMapping("/products")
-	public List<Product> getAllProduct(){
+
+	public List<Product> getAllProduct() {
 		return productService.getAllProducts();
 	}
 	
-	@RequestMapping("/product/{id}")
-	public Product getProduct(@PathVariable long id) {
-		return productService.getProduct(id);
+	@RequestMapping(value = {"/newProduct" })
+	public String login(Model model) {
+		return "newProduct";
 	}
-	
-	@RequestMapping(method = RequestMethod.POST, value="/products")
-	public void addProduct(@RequestBody Product product) {
+
+	@RequestMapping(value = "/product/{id}")
+	public String getProduct(@PathVariable("id") long id, Model model) {
+		Product p = productService.getProduct(id);
+		model.addAttribute("product", p);
+		return "product";
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = {"/newProduct"})
+	public void addProduct(Product product) {
+		product.setProductState(ProductState.CREATED);
 		productService.addProduct(product);
 	}
-	
-	@RequestMapping(method = RequestMethod.PUT, value="/product/{id}")
-	public void updateProduct(@PathVariable long id, Product product) {
+
+	@RequestMapping(method = RequestMethod.PUT, value = "/updateProduct")
+	public void updateProduct(@RequestBody Product product) {
 		productService.addProduct(product);
 	}
-	
-	@RequestMapping(method = RequestMethod.DELETE, value="products{id}")
-	public void delete(@PathVariable long id) {
+
+	@RequestMapping(value = "/products/delete/{id}")
+	public void delete(@PathVariable("id") long id) {
 		productService.deleteProduct(id);
 	}
 }

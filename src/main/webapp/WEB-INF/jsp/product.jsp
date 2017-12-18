@@ -13,22 +13,19 @@
 				<th>Product Name</th>
 				<th>Price</th>
 				<th>State</th>
-				<th></th>
-				<th></th>
-				<th></th>
 			</tr>
 		</thead>
-		<c:forEach items="${ products }" var="p">
-			<tr>
-				<td>${ p.description }</td>
-				<td><a href="product/${ p.id }">${ p.productName }</a></td>
-				<td>${ p.price }</td>
-				<td>${ p.productState }</td>
-				<td><a href="admin/approve/${ p.id }">Approve</a></td>
-				<td><a href="admin/reject/${ p.id }">Reject</a></td>
-				<td><a href="admin/delete/${ p.id }">Delete</a></td>
-			</tr>
-		</c:forEach>
+		<tr>
+			<td>${ product.description }</td>
+			<td>${ product.productName }</td>
+			<td>${ product.price }</td>
+			<td>${ product.productState }</td>
+		</tr>
 	</table>
-    </jsp:body>
+	<div>
+		<c:forEach items="${ product.images }" var="i">
+			<img src="data:image/jpg;base64,${ i }" width="200px" height="200px">
+		</c:forEach>
+	</div>
+</jsp:body>
 </t:genericpage>
