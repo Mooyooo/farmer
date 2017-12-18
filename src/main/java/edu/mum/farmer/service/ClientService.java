@@ -13,31 +13,31 @@ import edu.mum.farmer.repository.ClientRepository;
 public class ClientService implements IClientService {
 
 	@Autowired
-	ClientRepository customerRepository;
+	ClientRepository clientRepository;
 
-	public List<Client> getAllCustomers() {
+	public List<Client> getAllClients() {
 		List<Client> customers = new ArrayList<>();
-		customerRepository.findAll().forEach(customers::add);
+		clientRepository.findAll().forEach(customers::add);
 		return customers;
 	}
 
-	public Client getCustomer(long id) {
-		return customerRepository.findOne(id);
+	public Client getClient(long id) {
+		return clientRepository.findOne(id);
 	}
 
-	public void addCustomer(Client customer) {
-		customerRepository.save(customer);
+	public void addClient(Client customer) {
+		clientRepository.save(customer);
 	}
 
-	public void deleteCustomer(long id) {
-		customerRepository.delete(id);
+	public void deleteClient(long id) {
+		clientRepository.delete(id);
 	}
 
-	public void updateCustomer(Client customer) {
-		customerRepository.save(customer);
+	public void updateClient(Client customer) {
+		clientRepository.save(customer);
 	}
 	
 	public Client getClientByUsername(String username) {
-		return customerRepository.getClientByUsername(username);
+		return clientRepository.getClientByUsername(username);
 	}
 }

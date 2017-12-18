@@ -5,15 +5,15 @@ import java.util.List;
 import edu.mum.farmer.entity.Client;
 
 public interface IClientService {
-	public List<Client> getAllCustomers();
+	public List<Client> getAllClients();
 
-	public Client getCustomer(long id);
+	public Client getClient(long id);
 
-	public void addCustomer(Client customer);
+	public void addClient(Client client);
 
-	public void updateCustomer(Client customer);
+	public void updateClient(Client client);
 
-	public void deleteCustomer(long id);
+	public void deleteClient(long id);
 	
 	public Client getClientByUsername(String username);
 

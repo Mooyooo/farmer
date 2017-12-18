@@ -1,5 +1,8 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@attribute name="body" fragment="true"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +53,7 @@ body {
 							Products</a></li>
 					<li class="nav-item"><a class="nav-link" href="/newProduct">Add
 							Product</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Shopping
+					<li class="nav-item"><a class="nav-link" href="/approvedProducts">Shopping
 							Cart</a></li>
 					<li class="nav-item"><a class="nav-link" href="/login">Login/Logout</a>
 					</li>

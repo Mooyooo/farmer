@@ -1,5 +1,7 @@
 package edu.mum.farmer.entity;
 
+
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -20,7 +22,7 @@ public class User {
 	
 	@ManyToMany
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles;
+	private Set<Role> roles = new HashSet<Role>();
 
 	public long getId() {
 		return id;
@@ -52,5 +54,13 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+	
+	public void addRole(Role role) {
+		this.roles.add(role);
+	}
+	
+	public void addRemove(Role role) {
+		this.roles.remove(role);
 	}
 }

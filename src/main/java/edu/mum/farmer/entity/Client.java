@@ -2,6 +2,7 @@ package edu.mum.farmer.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,10 +28,11 @@ public class Client {
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
 	private String phone;
+	private String email;
 	@Embedded
 	private Address address;
 
-	@OneToOne
+	@OneToOne(cascade=CascadeType.PERSIST)
 	private ShoppingCart shoppingCart;
 
 	protected Client() {
@@ -94,6 +96,14 @@ public class Client {
 		this.phone = phone;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Address getAddress() {
 		return address;
 	}
@@ -108,6 +118,14 @@ public class Client {
 
 	public void setShoppingCart(ShoppingCart shoppingCart) {
 		this.shoppingCart = shoppingCart;
+	}
+
+	@Override
+	public String toString() {
+		return "\nfirstname:" + firstname + "\nlastame:" + lastname + "\nusername:" + username + "\nbirthDate:"
+				+ birthDate + "\nphone:" + phone + "\nemail:" + email
+		+address.toString();
+
 	}
 
 }

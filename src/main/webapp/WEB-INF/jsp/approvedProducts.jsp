@@ -1,17 +1,12 @@
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="../css/styles.css" />
-<title>Insert title here</title>
-</head>
-<body>
-	<table>
+<t:genericpage>
+	<jsp:body>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>Product name</th>
@@ -56,5 +51,5 @@
 			</tr>
 		</c:forEach>
 	</table>
-</body>
-</html>
+</jsp:body>
+</t:genericpage>

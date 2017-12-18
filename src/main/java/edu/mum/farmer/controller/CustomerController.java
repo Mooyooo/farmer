@@ -25,29 +25,29 @@ public class CustomerController {
 	@RequestMapping("/customers")
 	public String getAllCustomers(Model model) {
 		// public List<Client> getAllCustomers(Model model) {
-		model.addAttribute("customers", customerService.getAllCustomers());
+		model.addAttribute("customers", customerService.getAllClients());
 		// return customerService.getAllCustomers();
 		return "customerList";
 	}
 
 	@RequestMapping("/customers/{id}")
 	public Client getCustomer(@PathVariable long id) {
-		return customerService.getCustomer(id);
+		return customerService.getClient(id);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/customers/{id}")
 	public void updateCustomer(@PathVariable long id, Client customer) {
-		customerService.updateCustomer(customer);
+		customerService.updateClient(customer);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/customers")
 	public void addCustomer(@RequestBody Client customer) {
-		customerService.addCustomer(customer);
+		customerService.addClient(customer);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/customers{id}")
 	public void delete(@PathVariable long id) {
-		customerService.deleteCustomer(id);
+		customerService.deleteClient(id);
 	}
 
 	@RequestMapping("/approvedProducts")

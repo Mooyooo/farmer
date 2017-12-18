@@ -20,6 +20,7 @@ public class Address {
 	private String street;
 	private String city;
 	private String state;
+	private int zipCode;
 
 	public String getStreet() {
 		return street;
@@ -53,5 +54,8 @@ public class Address {
 		this.zipCode = zipCode;
 	}
 
-	private int zipCode;
+	@Override
+	public String toString() {
+		return "\nStreet:" + street + "\nCity:" + city + "\nState:" + state + "\nzipCode:" + zipCode;
+	}
 }

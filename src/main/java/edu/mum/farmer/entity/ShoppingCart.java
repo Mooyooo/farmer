@@ -32,10 +32,6 @@ public class ShoppingCart {
 	@JoinColumn(name = "shoppingCartId")
 	private List<LineItem> lineItems = new ArrayList<>();
 
-	protected ShoppingCart() {
-
-	}
-
 	public Client getClient() {
 		return client;
 	}
