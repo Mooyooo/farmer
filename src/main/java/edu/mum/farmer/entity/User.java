@@ -2,20 +2,31 @@ package edu.mum.farmer.entity;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class User {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "user_id")
 	private long id;
+	@NotEmpty(message = "*Please provide your username")
 	private String username;
+	@Column(name = "password")
+	@Length(min = 5, message = "*Your password must have at least 5 characters")
+	@NotEmpty(message = "*Please provide your password")
+	@Transient
 	private String password;
 	
 	@ManyToMany
