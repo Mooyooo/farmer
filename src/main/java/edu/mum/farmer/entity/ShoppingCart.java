@@ -5,14 +5,16 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 @Entity
 public class ShoppingCart {
@@ -26,7 +28,8 @@ public class ShoppingCart {
 	@OneToOne(mappedBy = "shoppingCart")
 	private Client client;
 
-	@ElementCollection
+	@OneToMany(cascade = {CascadeType.MERGE,CascadeType.REMOVE})
+	@JoinColumn(name = "shoppingCartId")
 	private List<LineItem> lineItems = new ArrayList<>();
 
 	protected ShoppingCart() {
@@ -66,6 +69,16 @@ public class ShoppingCart {
 	}
 
 	public void addLineItem(LineItem lineItem) {
+		LineItem li=null;
+		if (lineItems!=null) {
+			for (LineItem item : lineItems) {
+				if (lineItem.getProduct().getId() == item.getProduct().getId()) {
+					li = item;
+					lineItem.setQuantity(lineItem.getQuantity() + item.getQuantity());
+				}
+			}
+		}
+		lineItems.remove(li);
 		lineItems.add(lineItem);
 	}
 }

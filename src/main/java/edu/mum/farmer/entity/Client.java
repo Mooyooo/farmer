@@ -34,7 +34,6 @@ public class Client {
 	private ShoppingCart shoppingCart;
 
 	protected Client() {
-		shoppingCart = new ShoppingCart();
 	}
 
 	public Client(String firstname, String lastname, String username, Date birthDate, String phone, Address address) {

@@ -15,6 +15,7 @@ public interface IShoppingCartService {
 
 	public void addLineItem(LineItem lineItem);
 
-	public ShoppingCart removeLineItem(LineItem lineItem);
-
+	public void removeLineItem(LineItem lineItem);
+	
+	public ShoppingCart getShoppigCartByUsername(String username);
 }

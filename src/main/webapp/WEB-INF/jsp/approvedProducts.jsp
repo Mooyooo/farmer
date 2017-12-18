@@ -23,14 +23,35 @@
 		</thead>
 		<c:forEach items="${approvedProducts}" var="ap">
 			<tr>
-				<s:form action="/addItem/${ap.id}" method="post">
+				<s:form action="/approvedProducts" method="post">
 					<td>${ap.productName }</td>
 					<td>${ap.description }</td>
 					<td>${ap.price }</td>
-					<td><a href="/productDetail/${ap.id}">detail</a></td>
+					<td><a href="/product/${ap.id}">detail</a></td>
 					<td><input type="number" name="quantity"
-						value="${lineItem.quantity}" placeholder="quantity" min="1"> <input type="submit"
-						value="add to cart"/></td>
+						 placeholder="quantity" min="1" value="1">
+						 <input type="hidden" name="pid"
+						  value="${ap.id}">
+						<input type="submit" value="add to cart" /></td>
+				</s:form>
+			</tr>
+		</c:forEach>
+	</table>
+	<br>
+	<table>
+		<thead>
+			<tr>
+				<th>Product name</th>
+				<th>Quantity</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<c:forEach items="${cart.lineItems}" var="item">
+			<tr>
+				<s:form action="/addItem/${ap.id}" method="post">
+					<td>${item.product.productName }</td>
+					<td>${item.quantity }</td>
+					<td>${item.price }</td>
 				</s:form>
 			</tr>
 		</c:forEach>

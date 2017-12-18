@@ -12,7 +12,8 @@ public class LineItem {
 	@GeneratedValue
 	private long id;
 	private int quantity;
-	private float price;
+	private double price;
+	
 	@OneToOne
 	private Product product;
 
@@ -32,11 +33,11 @@ public class LineItem {
 		this.quantity = quantity;
 	}
 
-	public float getPrice() {
-		return price;
+	public double getPrice() {
+		return product.getPrice()*getQuantity();
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
