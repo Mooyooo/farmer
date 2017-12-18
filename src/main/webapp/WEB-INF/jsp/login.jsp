@@ -7,7 +7,7 @@
 <t:genericpage>
 	<jsp:body>
 <div class="container">
-       <div class="col-6 col-lg-offset-3">
+       <div class="col-8 col-offset-2">
            <h1 class="text-center login-title">Sign in to continue to Farmer App</h1>
            <div class="account-wall">
 				<c:if test="${error eq true}">
