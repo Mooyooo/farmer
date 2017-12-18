@@ -1,13 +1,19 @@
 package edu.mum.farmer.service;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 =======
+=======
+>>>>>>> 27ca3e4f1466e836d1ca9f146bce311d4a0f3b6c
 import java.util.Arrays;
 import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+<<<<<<< HEAD
+>>>>>>> 27ca3e4f1466e836d1ca9f146bce311d4a0f3b6c
+=======
 >>>>>>> 27ca3e4f1466e836d1ca9f146bce311d4a0f3b6c
 import org.springframework.stereotype.Service;
 
@@ -20,6 +26,7 @@ import edu.mum.farmer.repository.UserRepository;
 public class UserService implements IUserService {
 
 	@Autowired
+<<<<<<< HEAD
 <<<<<<< HEAD
 	UserRepository userRepository;
 	
@@ -62,6 +69,8 @@ public class UserService implements IUserService {
 	public Role getRole(long id) {
 		return roleRepository.findOne(id);
 =======
+=======
+>>>>>>> 27ca3e4f1466e836d1ca9f146bce311d4a0f3b6c
 	private UserRepository userRepository;
 	@Autowired
 	private RoleRepository roleRepository;
@@ -82,6 +91,9 @@ public class UserService implements IUserService {
 		Role userRole = roleRepository.findByName("ADMIN");
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
+<<<<<<< HEAD
+>>>>>>> 27ca3e4f1466e836d1ca9f146bce311d4a0f3b6c
+=======
 >>>>>>> 27ca3e4f1466e836d1ca9f146bce311d4a0f3b6c
 	}
 
