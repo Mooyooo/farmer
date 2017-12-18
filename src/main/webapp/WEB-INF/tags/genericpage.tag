@@ -52,7 +52,7 @@ body {
 							Product</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Shopping
 							Cart</a></li>
-					<li class="nav-item"><a class="nav-link" href="/login">Login/Logout</a>
+					<li class="nav-item"><a class="nav-link" href="/logout">Login/Logout</a>
 					</li>
 				</ul>
 			</div>
