@@ -63,22 +63,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 //				.logoutSuccessUrl("/").and().exceptionHandling()
 //				.accessDeniedPage("/access-denied");
-		http.
-			authorizeRequests()
-			.antMatchers("/").permitAll()
-			.antMatchers("/login").permitAll()
+//		http.
+//			authorizeRequests()
+//			.antMatchers("/").permitAll()
+//			.antMatchers("/login").permitAll()
 //			.antMatchers("/approvedProducts/**").hasAuthority("ADMIN")
 //			.anyRequest()
 //			.authenticated()
-			.and().cors().disable().formLogin()
-			.loginPage("/login")
-			.defaultSuccessUrl("/customerList")
-			.usernameParameter("username")
-			.passwordParameter("password")
-			.and().logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/login").and().exceptionHandling()
-			.accessDeniedPage("/login");
+//			.and().cors().disable().formLogin()
+//			.loginPage("/login")
+//			.defaultSuccessUrl("/customerList")
+//			.usernameParameter("username")
+//			.passwordParameter("password")
+//			.and().logout()
+//			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//			.logoutSuccessUrl("/login").and().exceptionHandling()
+//			.accessDeniedPage("/login");
 	}
 	
 	@Override
