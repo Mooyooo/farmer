@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.mum.farmer.entity.Product;
+import edu.mum.farmer.entity.ProductState;
 import edu.mum.farmer.service.IProductService;
 
 @Controller
@@ -20,6 +23,11 @@ public class ProductController {
 	public List<Product> getAllProduct() {
 		return productService.getAllProducts();
 	}
+	
+	@RequestMapping(value = {"/newProduct" })
+	public String login(Model model) {
+		return "newProduct";
+	}
 
 	@RequestMapping(value = "/product/{id}")
 	public String getProduct(@PathVariable("id") long id, Model model) {
@@ -28,13 +36,14 @@ public class ProductController {
 		return "product";
 	}
 
-	@RequestMapping(value = "/products/add")
-	public void addProduct(@PathVariable("id") Product product) {
+	@RequestMapping(method = RequestMethod.POST, value = {"/newProduct"})
+	public void addProduct(Product product) {
+		product.setProductState(ProductState.CREATED);
 		productService.addProduct(product);
 	}
 
-	@RequestMapping(value = "/product/update")
-	public void updateProduct(@PathVariable("id") long id, Product product) {
+	@RequestMapping(method = RequestMethod.PUT, value = "/updateProduct")
+	public void updateProduct(@RequestBody Product product) {
 		productService.addProduct(product);
 	}
 

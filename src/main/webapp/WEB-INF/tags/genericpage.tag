@@ -48,7 +48,7 @@ body {
 						href="/approvedProducts">Products</a></li>
 					<li class="nav-item"><a class="nav-link" href="/admin">All
 							Products</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Add
+					<li class="nav-item"><a class="nav-link" href="/newProduct">Add
 							Product</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Shopping
 							Cart</a></li>
