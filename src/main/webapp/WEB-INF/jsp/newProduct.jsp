@@ -19,7 +19,7 @@
 			</tr>
 			<tr>
 				<td align="left">Price: </td>
-				<td width=800><input name="price" type="text" class="form-control" placeholder="Price" required autofocus /></td>
+				<td width=800><input name="price" type="number" class="form-control" placeholder="Price" required autofocus/></td>
 			</tr>
 			<tr>
 				<td colspan=2><button class="btn btn-lg btn-primary btn-block" type="submit">Save</button></td>
