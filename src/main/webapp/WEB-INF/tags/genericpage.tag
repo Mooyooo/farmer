@@ -1,8 +1,5 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@attribute name="body" fragment="true"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<%@ taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
