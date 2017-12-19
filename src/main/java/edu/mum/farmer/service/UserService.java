@@ -20,7 +20,7 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
 	@Override
 	public void login(User user) {
 		// TODO Auto-generated method stub
@@ -58,9 +58,14 @@ public class UserService implements IUserService {
 	public Role getRole(long id) {
 		return roleRepository.findOne(id);
 	}
-	
+
 	@Override
 	public User findByUserName(String userName) {
 		return userRepository.findByUsername(userName);
+	}
+
+	@Override
+	public Role getRoleByName(String roleName) {
+		return roleRepository.findByName(roleName);
 	}
 }

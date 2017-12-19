@@ -25,6 +25,7 @@ public class User {
 	@Column(name = "user_id")
 	private long id;
 	@NotEmpty(message = "*Please provide your username")
+	@Column(unique=true)
 	private String username;
 	@Column(name = "password")
 	@Length(min = 5, message = "*Your password must have at least 5 characters")

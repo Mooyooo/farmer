@@ -33,7 +33,7 @@
 							class="clearfix"></span>
                 </form>
             </div>
-            <a href="#" class="text-center new-account">Create an account </a>
+            <a href="/createUser" class="text-center new-account">Create an account </a>
         </div>
 </div>
 	</jsp:body>
