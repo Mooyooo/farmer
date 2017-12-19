@@ -17,25 +17,30 @@ public class LoginController {
 	// return modelAndView;
 	// }
 
-	 @RequestMapping(value = { "/", "/login" })
-	 public String login() {
-	 System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-	 return "login";
-	 }
+	@RequestMapping(value = { "/", "/login" })
+	public String login() {
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		return "login";
+	}
 
-//	@RequestMapping(value = "/login")
-//	public String login(Model model, String error, String logout) {
-//		if (error != null) {
-//			model.addAttribute("error", "Your username and password is invalid.");
-//			System.out.println("Your username and password is invalid.");
-//		}
-//
-//		if (logout != null) {
-//			model.addAttribute("message", "You have been logged out successfully.");
-//			System.out.println("You have been logged out successfully.");
-//		}
-//
-//		return "login";
-//	}
+	@RequestMapping(value = "/accessDenied")
+	public String accessDenied() {
+		return "accessDenied";
+	}
+
+	// @RequestMapping(value = "/login")
+	// public String login(Model model, String error, String logout) {
+	// if (error != null) {
+	// model.addAttribute("error", "Your username and password is invalid.");
+	// System.out.println("Your username and password is invalid.");
+	// }
+	//
+	// if (logout != null) {
+	// model.addAttribute("message", "You have been logged out successfully.");
+	// System.out.println("You have been logged out successfully.");
+	// }
+	//
+	// return "login";
+	// }
 
 }

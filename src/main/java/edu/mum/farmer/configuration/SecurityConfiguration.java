@@ -69,6 +69,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/login").permitAll()
 			.antMatchers("/createUser").permitAll()
 			.antMatchers("/approvedProducts").authenticated()
+			.antMatchers("/product/**").authenticated()
 			.antMatchers("/admin/**").hasAuthority("ADMIN")
 			.antMatchers("/newProduct/**").hasAnyAuthority("ADMIN", "FARMER")
 			.and().csrf().disable()
@@ -77,7 +78,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.defaultSuccessUrl("/approvedProducts")
 			.and().logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/").and().exceptionHandling();
+			.logoutSuccessUrl("/").and().exceptionHandling()
+			.accessDeniedPage("/accessDenied");
 	}
 	
 	@Override
