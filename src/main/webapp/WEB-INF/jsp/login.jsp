@@ -14,22 +14,19 @@
 					<p>${sessionScope[SPRING_SECURITY_LAST_EXCEPTION].messages}</p>
 				</c:if>
                 <form class="form-signin" method="post"
-						action="<c:url value='/j_spring_security_check'/>">
-                <input type="text" class="form-control"
-							placeholder="Username" required autofocus
-							value='<c:if test="${not empty param.login_error}">
-			<c:out value="${SPRING_SECURITY_LAST_USERNAME}"/>
-		</c:if>'>
-                <input type="password" class="form-control"
-							placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block"
+						action="<c:url value='/login'/>">
+                	<input type="text" class="form-control"
+							placeholder="Username" name="username" required autofocus />
+	                <input type="password" class="form-control"
+							placeholder="Password" name="password" required>
+	                <button class="btn btn-lg btn-primary btn-block"
 							type="submit">
-                    Sign in</button>
-                <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me">
-                    Remember me
-                </label>
-                <a href="#" class="pull-right need-help">Need help? </a><span
+	                    Sign in</button>
+	                <label class="checkbox pull-left">
+	                    <input type="checkbox" value="remember-me">
+	                    Remember me
+	                </label>
+	                <a href="#" class="pull-right need-help">Need help? </a><span
 							class="clearfix"></span>
                 </form>
             </div>

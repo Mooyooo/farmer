@@ -3,18 +3,16 @@ package edu.mum.farmer.entity;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
 
-import org.springframework.validation.annotation.Validated;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Client {
@@ -24,6 +22,8 @@ public class Client {
 	private long id;
 	private String firstname;
 	private String lastname;
+	@NotEmpty(message = "*Please provide your username")
+	@Column(unique=true)
 	private String username;
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;

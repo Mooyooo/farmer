@@ -3,7 +3,6 @@ package edu.mum.farmer.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +29,14 @@ public class ShoppingCartController {
 
 	@RequestMapping(value = "/approvedProducts", method = RequestMethod.GET)
 	public String interstProduct(Model model) {
-		ShoppingCart cart = scs.getShoppigCartByUsername("mo");
+		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+		ShoppingCart cart;
+		if (!"anonymousUser".equals(loggedInUser.getName())) {
+			cart = scs.getShoppigCartByUsername(loggedInUser.getName());
+		} else {
+			// redirect to login page
+			cart = scs.getShoppigCartByUsername("molomjamts");
+		}
 		model.addAttribute("cart", cart);
 		model.addAttribute("approvedProducts", ps.getProductByProductState());
 		return "approvedProducts";
@@ -44,7 +50,7 @@ public class ShoppingCartController {
 			cart = scs.getShoppigCartByUsername(loggedInUser.getName());
 		} else {
 			// redirect to login page
-			cart = scs.getShoppigCartByUsername("mo");
+			cart = scs.getShoppigCartByUsername("molomjamts");
 		}
 		LineItem lineItem = new LineItem();
 		lineItem.setQuantity(quantity);
