@@ -10,7 +10,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 @Entity
 public class Product {
@@ -26,9 +25,8 @@ public class Product {
 	private ProductState productState;
 
 	@ElementCollection
-	@Lob
-	@Column(length=100000)
-	private List<byte[]> images = new ArrayList<>();
+	@Column(length=10000000)
+	private List<String> images = new ArrayList<>();
 
 	protected Product() {
 
@@ -78,11 +76,11 @@ public class Product {
 		this.productState = state;
 	}
 
-	public List<byte[]> getImages() {
+	public List<String> getImages() {
 		return images;
 	}
 
-	public void addImage(byte[] image) {
+	public void addImage(String image) {
 		this.images.add(image);
 	}
 
