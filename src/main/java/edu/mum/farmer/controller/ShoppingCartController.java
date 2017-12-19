@@ -35,7 +35,7 @@ public class ShoppingCartController {
 			cart = scs.getShoppigCartByUsername(loggedInUser.getName());
 		} else {
 			// redirect to login page
-			cart = scs.getShoppigCartByUsername("molomjamts");
+			return "login";
 		}
 		model.addAttribute("cart", cart);
 		model.addAttribute("approvedProducts", ps.getProductByProductState());
@@ -50,7 +50,7 @@ public class ShoppingCartController {
 			cart = scs.getShoppigCartByUsername(loggedInUser.getName());
 		} else {
 			// redirect to login page
-			cart = scs.getShoppigCartByUsername("molomjamts");
+			return "login";
 		}
 		LineItem lineItem = new LineItem();
 		lineItem.setQuantity(quantity);

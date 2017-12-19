@@ -1,7 +1,10 @@
 package edu.mum.farmer.entity;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -72,5 +74,12 @@ public class User {
 
 	public void addRemove(Role role) {
 		this.roles.remove(role);
+	}
+
+	@Override
+	public String toString() {
+		return "username:"+username+" password:"+password+" roles:"+roles.stream()
+        .map( Role::getName )
+        .collect( Collectors.joining("," ) );
 	}
 }

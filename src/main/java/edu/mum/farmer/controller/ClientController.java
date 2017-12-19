@@ -2,15 +2,11 @@ package edu.mum.farmer.controller;
 
 import java.util.Date;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,26 +36,18 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
-	public String createUser( User user, Client client,  Address address, BindingResult bindingResult, 
-			Errors errors, Model model) {
+	public String createUser(User user, Client client, Address address, BindingResult bindingResult, String userType,
+			Model model) {
 		ShoppingCart cart = new ShoppingCart();
 		Role role;
-		if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
-			role = us.getRoleByName("FARMER");
-		} else {
-			role = us.getRoleByName("USER");
-		}
+		role = us.getRoleByName(userType);
 		cart.setAddedDate(new Date());
 		client.setShoppingCart(cart);
 		client.setAddress(address);
 		user.addRole(role);
-		System.out.println("Post Create user page called!");
-		System.out.println(client.toString());
-
-		System.out.println("user:" + user.getUsername() + " password:" + user.getPassword());
 		cs.addClient(client);
 		us.createUser(user);
-		return "redirect:/createUser";
+		return "redirect:/login";
 	}
 
 	@RequestMapping(value = "/user/{id}")

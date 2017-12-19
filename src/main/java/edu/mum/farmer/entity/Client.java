@@ -23,7 +23,7 @@ public class Client {
 	private String firstname;
 	private String lastname;
 	@NotEmpty(message = "*Please provide your username")
-	@Column(unique=true)
+	@Column(unique = true)
 	private String username;
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
@@ -32,7 +32,7 @@ public class Client {
 	@Embedded
 	private Address address;
 
-	@OneToOne(cascade=CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private ShoppingCart shoppingCart;
 
 	protected Client() {
@@ -122,9 +122,8 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "\nfirstname:" + firstname + "\nlastame:" + lastname + "\nusername:" + username + "\nbirthDate:"
-				+ birthDate + "\nphone:" + phone + "\nemail:" + email
-		+address.toString();
+		return "\nfirstname:" + firstname + "\nlastame:" + lastname + "\nusername:" + username + "\nphone:" + phone
+				+ "\nemail:" + email + address.toString();
 
 	}
 

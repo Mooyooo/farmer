@@ -24,6 +24,14 @@
 							value="Khaimchig" /></td>
 			</tr>
 			<tr>
+				<td align="left">User Type: </td>
+				<td width=800><select name="userType" 
+							class="form-control">
+								<option value="FARMER">Farmer</option>
+								<option value="USER">Customer</option>
+							</select></td>
+			</tr>
+			<tr>
 				<td align="left">Username: </td>
 				<td width=800><input name="username" type="text"
 							class="form-control" placeholder="username" required autofocus
@@ -48,6 +56,7 @@
 							class="form-control" placeholder="confirmPassword" required
 							autofocus value="pass" /></td>
 			</tr>
+			
 			<tr>
 				<td align="left">Email: </td>
 				<td width=800><input name="email" type="text"
@@ -60,12 +69,12 @@
 							class="form-control" placeholder="phone" required autofocus
 							value="99105020" /></td>
 			</tr>
-			<%-- <tr>
+<%-- 			 <tr>
 				<td align="left">Birth Date: </td>
 				<td width=800><input name="birthDate" type="date"
-							class="form-control" placeholder="birth date" required autofocus
-							value="1984-12-02" /></td>
-			</tr> --%>
+							class="form-control" required autofocus
+						 pattern="MM-dd-yyyy"/></td>
+			</tr>  --%>
 			<tr>
 				<td align="left">Street: </td>
 				<td width=800><input name="street" type="text"
