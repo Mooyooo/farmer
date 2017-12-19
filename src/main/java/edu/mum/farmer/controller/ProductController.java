@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.mum.farmer.entity.Client;
 import edu.mum.farmer.entity.Product;
 import edu.mum.farmer.entity.ProductState;
 import edu.mum.farmer.service.IProductService;
@@ -51,14 +52,21 @@ public class ProductController {
 		product.setProductState(ProductState.CREATED);
 		productService.addProduct(product);
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT, value = {"product/update/{id}"})
+	public void updateProduct(@RequestParam("file") List<MultipartFile> files, @PathVariable long id, Product product) throws IOException {
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/updateProduct")
-	public void updateProduct(@RequestBody Product product) {
-		productService.addProduct(product);
+		for (MultipartFile file : files) {
+			String fileBase64String = new String(Base64.getEncoder().encode(file.getBytes()));
+			product.addImage(fileBase64String);
+		}
+		
+		productService.updateProduct(product);
 	}
 
-	@RequestMapping(value = "/products/delete/{id}")
-	public void delete(@PathVariable("id") long id) {
+	@RequestMapping(value = "/product/delete/{id}")
+	public String deleteProduct(@PathVariable("id") long id, Model model) {
 		productService.deleteProduct(id);
+		return "redirect:/admin";
 	}
 }

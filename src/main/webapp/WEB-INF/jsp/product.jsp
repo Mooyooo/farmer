@@ -20,6 +20,8 @@
 			<td>${ product.productName }</td>
 			<td>${ product.price }</td>
 			<td>${ product.productState }</td>
+			<td><a href="update/${ product.id }">Edit</a></td>
+			<td><a href="delete/${ product.id }">Delete</a></td>
 		</tr>
 	</table>
 	<div>
