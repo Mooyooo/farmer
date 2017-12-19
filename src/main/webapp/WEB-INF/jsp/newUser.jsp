@@ -8,9 +8,10 @@
 <t:genericpage>
 	<jsp:body>
 <div class="container">
-	<s:form action="/createUser" method="post">
+	<s:form action="/createUser" method="post" modelAttribute="user">
 		<table>
 			<tr>
+			<s:errors path="*" element="div"></s:errors>
 				<td align="left">Firstname: </td>
 				<td width=800><input name="firstname" type="text"
 							class="form-control" placeholder="Firstname" required autofocus
@@ -26,13 +27,20 @@
 				<td align="left">Username: </td>
 				<td width=800><input name="username" type="text"
 							class="form-control" placeholder="username" required autofocus
-							value="molomjamts" /></td>
+							value="molomjamts" /></td> 
+				<%-- <td width="800"><s:input path="username" class="form-control" />
+				 <s:errors path="username" cssClass="error" />
+				 </td>		--%>	
 			</tr>
 			<tr>
 				<td align="left">Password: </td>
 				<td width=800><input name="password" type="text"
 							class="form-control" placeholder="password" required autofocus
-							value="pass" /></td>
+							value="pass" /></td> 
+				<%-- <td width="800"><s:input path="password"
+								class="form-control" />
+				 <s:errors path="password" cssClass="error" />
+				 </td>	--%>		
 			</tr>
 			<tr>
 				<td align="left">Confirm password: </td>
