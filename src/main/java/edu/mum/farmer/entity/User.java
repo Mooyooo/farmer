@@ -1,6 +1,5 @@
 package edu.mum.farmer.entity;
 
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,13 +24,13 @@ public class User {
 	@Column(name = "user_id")
 	private long id;
 	@NotEmpty(message = "*Please provide your username")
-	@Column(unique=true)
+	@Column(unique = true)
 	private String username;
 	@Column(name = "password")
-	@Length(min = 5, message = "*Your password must have at least 5 characters")
+	// @Length(min = 5, message = "*Your password must have at least 5 characters")
 	@NotEmpty(message = "*Please provide your password")
 	private String password;
-	
+
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<Role>();
@@ -67,11 +66,11 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
+
 	public void addRole(Role role) {
 		this.roles.add(role);
 	}
-	
+
 	public void addRemove(Role role) {
 		this.roles.remove(role);
 	}
