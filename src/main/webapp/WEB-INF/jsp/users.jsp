@@ -11,12 +11,20 @@
 	
 		<tr>
 			<th>Firstname</th>
-			<th>Lastname</th>
+			<th>firstname</th>
+			<th>lastname</th>
+			<th>email</th>
+			<th>phone</th>
+			<th>Delete</th>
 		</tr>
-		<c:forEach items="${customers}" var="c">
+		<c:forEach items="${users}" var="c">
 			<tr>
+				<td>${c.username }</td>
 				<td>${c.firstname }</td>
 				<td>${c.lastname }</td>
+				<td>${c.email }</td>
+				<td>${c.phone }</td>
+				<td><a href="users/delete/${ c.id }">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

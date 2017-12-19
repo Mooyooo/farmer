@@ -2,13 +2,11 @@ package edu.mum.farmer.controller;
 
 import java.util.Date;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -57,14 +55,17 @@ public class ClientController {
 		return "userDetail";
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/updateUser")
-	public void updateUser(@RequestBody Client client) {
-		cs.updateClient(client);
+	@RequestMapping(value="/users" ,method=RequestMethod.GET)
+	public String getAllCustomers(Model model) {
+		model.addAttribute("users", cs.getAllClients());
+		return "users";
 	}
 
 	@RequestMapping(value = "/users/delete/{id}")
-	public void delete(@PathVariable("id") long id) {
+	public String delete(@PathVariable("id") long id) {
+		Client client = cs.getClient(id);
+		us.delete(us.getUserByUsername(client.getUsername()));
 		cs.deleteClient(id);
-		us.delete(us.getUser(id));
+		return "redirect:/users";
 	}
 }

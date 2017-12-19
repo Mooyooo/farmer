@@ -71,6 +71,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/approvedProducts").authenticated()
 			.antMatchers("/product/**").authenticated()
 			.antMatchers("/admin/**").hasAuthority("ADMIN")
+			.antMatchers("/users/**").hasAuthority("ADMIN")
 			.antMatchers("/newProduct/**").hasAnyAuthority("ADMIN", "FARMER")
 			.and().csrf().disable()
 			.formLogin()

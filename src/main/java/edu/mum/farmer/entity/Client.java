@@ -32,7 +32,7 @@ public class Client {
 	@Embedded
 	private Address address;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE} )
 	private ShoppingCart shoppingCart;
 
 	protected Client() {

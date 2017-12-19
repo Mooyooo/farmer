@@ -45,6 +45,8 @@ body {
 					<li class="nav-item active"><a class="nav-link" href="#">Home
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
+						href="/users">Users</a></li>
+					<li class="nav-item"><a class="nav-link"
 						href="/approvedProducts">Products</a></li>
 					<li class="nav-item"><a class="nav-link" href="/admin">All
 							Products</a></li>

@@ -8,13 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import edu.mum.farmer.entity.Client;
 import edu.mum.farmer.entity.Product;
 import edu.mum.farmer.entity.ProductState;
 import edu.mum.farmer.service.IProductService;
@@ -68,5 +66,11 @@ public class ProductController {
 	public String deleteProduct(@PathVariable("id") long id, Model model) {
 		productService.deleteProduct(id);
 		return "redirect:/admin";
+	}
+	
+	@RequestMapping("/approvedProducts")
+	public String interstProduct(Model model) {
+		model.addAttribute("approvedProducts", productService.getProductByProductState());
+		return "approvedProducts";
 	}
 }
