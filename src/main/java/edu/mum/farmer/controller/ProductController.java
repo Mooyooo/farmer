@@ -1,6 +1,7 @@
 package edu.mum.farmer.controller;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,12 +44,12 @@ public class ProductController {
 	public void addProduct(@RequestParam("file") List<MultipartFile> files, Product product) throws IOException {
 
 		for (MultipartFile file : files) {
-			product.addImage(file.getBytes());
+			String fileBase64String = new String(Base64.getEncoder().encode(file.getBytes()));
+			product.addImage(fileBase64String);
 		}
 		
 		product.setProductState(ProductState.CREATED);
 		productService.addProduct(product);
-		System.out.println("uploaded");
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/updateProduct")
