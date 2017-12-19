@@ -28,7 +28,7 @@ public class ShoppingCart {
 	@OneToOne(mappedBy = "shoppingCart")
 	private Client client;
 
-	@OneToMany(cascade = {CascadeType.MERGE,CascadeType.REMOVE})
+	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.REMOVE })
 	@JoinColumn(name = "shoppingCartId")
 	private List<LineItem> lineItems = new ArrayList<>();
 
@@ -65,8 +65,8 @@ public class ShoppingCart {
 	}
 
 	public void addLineItem(LineItem lineItem) {
-		LineItem li=null;
-		if (lineItems!=null) {
+		LineItem li = null;
+		if (lineItems != null) {
 			for (LineItem item : lineItems) {
 				if (lineItem.getProduct().getId() == item.getProduct().getId()) {
 					li = item;
@@ -76,5 +76,15 @@ public class ShoppingCart {
 		}
 		lineItems.remove(li);
 		lineItems.add(lineItem);
+	}
+
+	public double getTotal() {
+		double total = 0.0;
+		if (lineItems != null) {
+			for (LineItem item : lineItems) {
+				total += item.getPrice();
+			}
+		}
+		return total;
 	}
 }

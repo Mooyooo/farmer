@@ -24,23 +24,24 @@
 					<td>${ap.price }</td>
 					<td><a href="/product/${ap.id}">detail</a></td>
 					<td><input type="number" name="quantity"
-						 placeholder="quantity" min="1" value="1">
-						 <input type="hidden" name="pid"
-						  value="${ap.id}">
+							placeholder="quantity" min="1" value="1">
+						 <input type="hidden" name="pid" value="${ap.id}">
 						<input type="submit" value="add to cart" /></td>
 				</s:form>
 			</tr>
 		</c:forEach>
 	</table>
 	<br>
-	<table>
+	<div class="float-sm-right">
+	<table class="table table-sm">
 		<thead>
-			<tr>
-				<th>Product name</th>
-				<th>Quantity</th>
+			<h5>In my shopping cart</h5>
+		</thead>
+		<tr>
+				<th>Product</th>
+				<th>Qty</th>
 				<th>Price</th>
 			</tr>
-		</thead>
 		<c:forEach items="${cart.lineItems}" var="item">
 			<tr>
 				<s:form action="/addItem/${ap.id}" method="post">
@@ -50,6 +51,15 @@
 				</s:form>
 			</tr>
 		</c:forEach>
+		<tr>
+			<td colspan="2" class="font-weight-bold">Total:</td>
+			<td class="font-weight-bold">${cart.getTotal() }</td>
+		</tr>
+		<tr>
+		<td colspan="3"><input class="btn btn-lg btn-primary btn-block"
+						type="submit" value="Checkout" /></td>	
+		</tr>
 	</table>
+	</div>
 </jsp:body>
 </t:genericpage>

@@ -49,7 +49,6 @@ public class ShoppingCartController {
 		LineItem lineItem = new LineItem();
 		lineItem.setQuantity(quantity);
 		lineItem.setProduct(ps.getProduct(pid));
-		lineItem.setPrice(lineItem.getPrice());
 		cart.addLineItem(lineItem);
 		scs.updateShoppingCart(cart);
 		return "redirect:/approvedProducts";
