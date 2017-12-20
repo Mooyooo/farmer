@@ -1,6 +1,7 @@
 package edu.mum.farmer.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,8 +34,11 @@ public class Client {
 	@Embedded
 	private Address address;
 
-	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE} )
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private ShoppingCart shoppingCart;
+
+	@OneToMany(mappedBy="client")
+	private List<Order> orders;
 
 	protected Client() {
 	}
@@ -118,6 +123,14 @@ public class Client {
 
 	public void setShoppingCart(ShoppingCart shoppingCart) {
 		this.shoppingCart = shoppingCart;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	@Override

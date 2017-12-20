@@ -60,10 +60,13 @@ public class ShoppingCart {
 		this.id = id;
 	}
 
+	public void removeAllLineItem() {
+		lineItems.clear();
+	}
 	public void removeLineItem(LineItem item) {
 		lineItems.remove(item);
 	}
-
+	
 	public void addLineItem(LineItem lineItem) {
 		LineItem li = null;
 		if (lineItems != null) {

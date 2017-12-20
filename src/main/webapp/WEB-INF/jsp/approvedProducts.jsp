@@ -51,14 +51,19 @@
 				</s:form>
 			</tr>
 		</c:forEach>
+		<s:form action="/checkout" method="post">
 		<tr>
 			<td colspan="2" class="font-weight-bold">Total:</td>
-			<td class="font-weight-bold">${cart.getTotal() }</td>
+			<td class="font-weight-bold">${cart.getTotal() } <input
+							type="hidden" name="total" value="${cart.getTotal() }"> </td>
 		</tr>
 		<tr>
-		<td colspan="3"><input class="btn btn-lg btn-primary btn-block"
-						type="submit" value="Checkout" /></td>	
+		<td colspan="3">
+			<input class="btn btn-lg btn-primary btn-block" type="submit"
+							value="Checkout" />
+		</td>	
 		</tr>
+		</s:form>
 	</table>
 	</div>
 </jsp:body>

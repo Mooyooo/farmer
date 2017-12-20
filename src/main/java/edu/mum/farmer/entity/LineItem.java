@@ -13,7 +13,7 @@ public class LineItem {
 	private long id;
 	private int quantity;
 	private double price;
-	
+
 	@OneToOne
 	private Product product;
 
@@ -34,7 +34,7 @@ public class LineItem {
 	}
 
 	public double getPrice() {
-		return product.getPrice()*getQuantity();
+		return product.getPrice() * getQuantity();
 	}
 
 	public void setPrice(double price) {

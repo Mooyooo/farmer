@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.mum.farmer.entity.LineItem;
+import edu.mum.farmer.entity.Order;
 import edu.mum.farmer.entity.ShoppingCart;
+import edu.mum.farmer.jms.Sender;
 import edu.mum.farmer.service.IClientService;
+import edu.mum.farmer.service.IOrderService;
 import edu.mum.farmer.service.IProductService;
 import edu.mum.farmer.service.IShoppingCartService;
 
@@ -26,6 +29,12 @@ public class ShoppingCartController {
 
 	@Autowired
 	IClientService cs;
+	
+	@Autowired
+	IOrderService os;
+	
+	@Autowired
+	Sender sender;
 
 	@RequestMapping(value = "/approvedProducts", method = RequestMethod.GET)
 	public String interstProduct(Model model) {
@@ -56,6 +65,26 @@ public class ShoppingCartController {
 		lineItem.setQuantity(quantity);
 		lineItem.setProduct(ps.getProduct(pid));
 		cart.addLineItem(lineItem);
+		scs.updateShoppingCart(cart);
+		return "redirect:/approvedProducts";
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/checkout")
+	public String checkout(Double total, Model model) {
+		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+		ShoppingCart cart;
+		sender.send(total+"");
+		if (!"anonymousUser".equals(loggedInUser.getName())) {
+			cart = scs.getShoppigCartByUsername(loggedInUser.getName());
+		} else {
+			// redirect to login page
+			return "login";
+		}
+//		Order order = new Order();
+//		order.setOrders(cart.getLineItems());
+//		order.setStatus("NEW");
+//		os.addOrder(order);
+		cart.removeAllLineItem();
 		scs.updateShoppingCart(cart);
 		return "redirect:/approvedProducts";
 	}
