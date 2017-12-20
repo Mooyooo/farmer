@@ -25,7 +25,7 @@ public class Product {
 	private ProductState productState;
 
 	@ElementCollection
-	@Column(length=10000000)
+	@Column(length = 10000000)
 	private List<String> images = new ArrayList<>();
 
 	protected Product() {

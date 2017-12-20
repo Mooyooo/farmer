@@ -14,7 +14,6 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<!-- Tiep downgrade to 1.5.7 to runnable JSP -->
 		<version>1.5.7.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
@@ -74,8 +73,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-solr</artifactId>
 		</dependency>
-
-		<!-- Tiep add these 2 dependencies to runnable JSP -->
+		
 		<!-- Web with Tomcat -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

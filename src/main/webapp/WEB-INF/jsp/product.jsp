@@ -6,29 +6,28 @@
 
 <t:genericpage>
 	<jsp:body>
-	<table class="table">
-		<thead>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Product Name</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>State</th>
+				</tr>
+			</thead>
 			<tr>
-				<th>Description</th>
-				<th>Product Name</th>
-				<th>Price</th>
-				<th>State</th>
+				<td>${ product.productName }</td>
+				<td>${ product.description }</td>
+				<td>${ product.price }</td>
+				<td>${ product.productState }</td>
+				<td><a href="${ product.id }/update">Update</a></td>
+				<td><a href="${ product.id }/delete">Delete</a></td>
 			</tr>
-		</thead>
-		<tr>
-			<td>${ product.description }</td>
-			<td>${ product.productName }</td>
-			<td>${ product.price }</td>
-			<td>${ product.productState }</td>
-			<td><a href="update/${ product.id }">Edit</a></td>
-			<td><a href="delete/${ product.id }">Delete</a></td>
-		</tr>
-	</table>
-	<div>
-		<%-- <c:forEach var="productImage" items="${product.getImages()}"> --%>
-		<c:forEach var="productImage" items="${product.images}">
-			<img src="data:image/jpeg;base64,${productImage}" height="200px"/>&nbsp&nbsp&nbsp  
-		</c:forEach>
-	</div>
-</jsp:body>
+		</table>
+		<div>
+			<c:forEach var="productImage" items="${product.images}">
+				<img src="data:image/jpeg;base64,${productImage}" height="200px" align="left"/>&nbsp&nbsp&nbsp  
+			</c:forEach>
+		</div>
+	</jsp:body>
 </t:genericpage>
