@@ -23,10 +23,10 @@
 							type="submit">
 	                    Sign in</button>
 	                <label class="checkbox pull-left">
-	                    <input type="checkbox" value="remember-me">
+	                    <input type="checkbox" name="remember-me" value="remember-me">
 	                    Remember me
 	                </label>
-	                <a href="#" class="pull-right need-help">Need help? </a><span
+	                <a href="#" class="pull-right need-help" style="display: none;">Need help? </a><span
 							class="clearfix"></span>
                 </form>
             </div>
